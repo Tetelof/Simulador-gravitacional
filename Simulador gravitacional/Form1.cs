@@ -17,21 +17,19 @@ namespace Simulador_gravitacional
             InitializeComponent();
         }
 
-        Graphics g;
-        Timer t = new();
+        Graphics graphics;
+        Timer timer = new();
         private void Form1_Load(object sender, EventArgs e)
         {
-            g = this.CreateGraphics();
-
-            t.Interval = 20;
-            t.Tick += new EventHandler(t_Tick);
-            t.Start();
+            graphics = this.CreateGraphics();
+            timer.Interval = 20;
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
         }
 
-        void t_Tick(object sender, EventArgs e)
+        void timer_Tick(object sender, EventArgs e)
         {
-            g.Clear(Color.Black);
-            
+            graphics.Clear(Color.Black);
         }
     }
 }

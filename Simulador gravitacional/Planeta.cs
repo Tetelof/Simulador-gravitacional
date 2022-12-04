@@ -8,112 +8,110 @@ namespace Simulador_gravitacional
 {
     class Planeta : Corpo
     {
+        public const double PI = 3.14159265359;
         public override double getDensidade()
         {
-            throw new NotImplementedException();
+            return this.Densidade;
         }
 
         public override double getForcaX()
         {
-            throw new NotImplementedException();
+            return this.ForcaX;
         }
 
         public override double getForcaY()
         {
-            throw new NotImplementedException();
+            return this.ForcaY;
         }
 
         public override double getMassa()
         {
-            throw new NotImplementedException();
+            return this.Massa;
         }
 
         public override string getNome()
         {
-            throw new NotImplementedException();
+            return this.Nome;
         }
 
         public override double getPosX()
         {
-            throw new NotImplementedException();
+            return this.PosX;
         }
 
         public override double getPosY()
         {
-            throw new NotImplementedException();
+            return this.PosY;
         }
 
         public override double getRaio()
         {
-            throw new NotImplementedException();
+            double volume = Massa / Densidade;
+            double raio = Math.Pow(((volume / PI) * (3 / 4)), 1 / 3);
+            return raio;
         }
 
         public override double getVelocidadeX()
         {
-            throw new NotImplementedException();
+            return this.VelX;
         }
 
         public override double getVelocidadeY()
         {
-            throw new NotImplementedException();
+            return this.VelY;
         }
 
         public override void setDensidade(double densidade)
         {
-            throw new NotImplementedException();
+            this.Densidade = densidade;
         }
 
         public override void setForcaX(double forca_x)
         {
-            throw new NotImplementedException();
+            this.ForcaX += forca_x;
         }
 
         public override void setForcaY(double forca_y)
         {
-            throw new NotImplementedException();
+            this.ForcaY += forca_y;
         }
 
         public override void setMassa(double massa)
         {
-            throw new NotImplementedException();
+            this.Massa = massa;
         }
 
         public override void setNome(string nome)
         {
-            throw new NotImplementedException();
+            this.Nome = nome;
         }
 
         public override void setPosX(double pos_x)
         {
-            throw new NotImplementedException();
+            this.PosX = pos_x;
         }
 
-        public override void setPosY(double pos_x)
+        public override void setPosY(double pos_y)
         {
-            throw new NotImplementedException();
+            this.PosY = pos_y;
         }
 
         public override void setVelocidadeX(double velocidade_x)
         {
-            throw new NotImplementedException();
+            this.VelX = velocidade_x;
         }
 
         public override void setVelocidadeY(double velocidade_y)
         {
-            throw new NotImplementedException();
+            this.VelY = velocidade_y;
         }
 
         public static Planeta operator +(Planeta a, Planeta b)
         {
-            Planeta c = new Planeta
-            {
-                Massa = a.getMassa() + b.getMassa(),
-                PosX = a.PosX,
-                PosY = a.PosY,
-                VelX = a.VelX + b.VelY,
-                VelY = a.VelY + b.VelY
-            };
-            return c;
+            a.Massa = a.Massa + b.Massa;
+            a.VelX = a.VelX + b.VelY;
+            a.VelY = a.VelY + b.VelY;
+            return a;
         }
     }
 }

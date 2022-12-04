@@ -15,6 +15,8 @@ namespace Simulador_gravitacional
         protected double PosY;
         protected double VelX;
         protected double VelY;
+        protected double ForcaX;
+        protected double ForcaY;
         public abstract string getNome();
         public abstract void setNome(string nome);
         public abstract double getMassa();
@@ -27,7 +29,7 @@ namespace Simulador_gravitacional
         public abstract double getPosX();
         public abstract void setPosX(double pos_x);
         public abstract double getPosY();
-        public abstract void setPosY(double pos_x);
+        public abstract void setPosY(double pos_y);
         public abstract double getDensidade();
         public abstract void setDensidade(double densidade);
         public abstract double getForcaX();
