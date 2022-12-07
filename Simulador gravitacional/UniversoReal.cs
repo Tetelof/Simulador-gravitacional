@@ -30,5 +30,10 @@ namespace Simulador_gravitacional
         {
             throw new NotImplementedException();
         }
+        
+        public Planeta GetPlaneta(index)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
