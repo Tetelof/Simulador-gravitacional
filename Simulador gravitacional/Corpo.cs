@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simulador_gravitacional
 {
-    abstract class Corpo
+    public abstract class Corpo
     {
         protected string Nome;
         protected double Massa;

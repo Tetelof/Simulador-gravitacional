@@ -18,13 +18,18 @@ namespace Simulador_gravitacional
         }
 
         Parametros parametros = new Parametros();
+        UniversoReal Universo = new UniversoReal();
+        
         Graphics graphics;
         Timer timer = new();
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Universo.Planetas = parametros.Planetas;
+            Universo.Tempo = parametros.TempoEntreInteracoes;
+
             graphics = this.CreateGraphics();
-            timer.Interval = parametros.TempoEntreInteracoes;
+            timer.Interval = 100;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
@@ -32,25 +37,26 @@ namespace Simulador_gravitacional
         void timer_Tick(object sender, EventArgs e)
         {
             graphics.Clear(Color.Black);
-
+            
             for(int i =0; i< parametros.QtdCorpos; i++)
             {
-
-                Planeta pl = UniversoReal.GetPlaneta(i);
+                Planeta pl = Universo.GetPlaneta(i);
                 if(pl == null)
                 {
                     continue;
                 }
-                double posX = pl.GetPosX();
-                double posY = pl.GetPosY();
+                int prop = 2;
+                double posX = pl.getPosX();
+                double posY = pl.getPosY();
                 graphics.DrawEllipse(
                     new Pen(Color.FromArgb(255,255,255)),
-                    (double) (posX - pl.GetRaio()) / prop,
-                    (double) (posY - pl.GetRaio()) / prop,
-                    (double) (pl.GetRaio() * 2) / prop,
-                    (double) (pl.GetRaio() * 2) / prop
+                    (int) (posX - pl.getRaio()) / prop,
+                    (int) (posY - pl.getRaio()) / prop,
+                    (int) (pl.getRaio() * 2) / prop,
+                    (int) (pl.getRaio() * 2) / prop
                 );
             }
+            Universo.CalculoInteracoesGravitacionais();
         }
     }
 }

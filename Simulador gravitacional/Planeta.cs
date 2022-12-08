@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simulador_gravitacional
 {
-    class Planeta : Corpo
+    public class Planeta : Corpo
     {
         public const double PI = 3.14159265359;
         public override double getDensidade()
@@ -47,7 +47,8 @@ namespace Simulador_gravitacional
         public override double getRaio()
         {
             double volume = Massa / Densidade;
-            double raio = Math.Pow(((volume / PI) * (3 / 4)), 1 / 3);
+            double raio3 = volume / (4d / 3d * PI);
+            double raio = Math.Pow(raio3, 1d / 3d);
             return raio;
         }
 
@@ -68,12 +69,12 @@ namespace Simulador_gravitacional
 
         public override void setForcaX(double forca_x)
         {
-            this.ForcaX += forca_x;
+            this.ForcaX = forca_x;
         }
 
         public override void setForcaY(double forca_y)
         {
-            this.ForcaY += forca_y;
+            this.ForcaY = forca_y;
         }
 
         public override void setMassa(double massa)

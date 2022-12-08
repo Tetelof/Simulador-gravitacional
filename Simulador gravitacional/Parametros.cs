@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Simulador_gravitacional
 {
-    class Parametros
+    public class Parametros
     {
         public int QtdCorpos { get; set; }
         public int QtdInteracoes { get; set; }
@@ -11,19 +11,19 @@ namespace Simulador_gravitacional
         public Planeta[] Planetas { get; set; }
         public Parametros()
         {
-            StreamReader sr = new("./");
+            StreamReader sr = new("./arquivo.txt");
             string[] valores = sr.ReadLine().Split(";");
             this.QtdCorpos = Convert.ToInt32(valores[0]);
             this.QtdInteracoes = Convert.ToInt32(valores[1]);
             this.TempoEntreInteracoes = Convert.ToInt32(valores[2]);
             this.Planetas = new Planeta[this.QtdCorpos];
-            for (int i =0; sr.EndOfStream; i++)
+            for (int i =0; !sr.EndOfStream; i++)
             {
                 valores = sr.ReadLine().Split(";");
                 this.Planetas[i] = new Planeta();
                 this.Planetas[i].setNome(valores[0]);
                 this.Planetas[i].setMassa(Convert.ToDouble(valores[1]));
-                if (this.Planetas[i].getMassa() > 500 || this.Planetas[i].getMassa() < 1)
+                if (this.Planetas[i].getMassa() < 0 || this.Planetas[i].getMassa() < 1)
                 {
                     throw new Exception($"Corpo {valores[0]} com massa fora do limite.");
                 }
