@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Simulador_gravitacional
 {
+    //terefdefe
     public partial class Form1 : Form
     {
         public Form1()
